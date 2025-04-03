@@ -1,11 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Aplicativo COCOMO 81</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+    <header>
+        <h1>Modelo Intermedio COCOMO 81</h1>
+    </header>
+    <main>
+        <form id="cocomoForm">
+            <h2>Ingrese los datos del proyecto</h2>
+            <label for="kloc">Tamaño del proyecto (KLOC):</label>
+            <input type="number" id="kloc" name="kloc" min="1" required>
+            <label for="factoresAjuste">Factores de ajuste:</label>
+            <input type="number" id="factoresAjuste" name="factoresAjuste" step="0.01" min="0.1" required>
+            <label for="sueldoMensual">Sueldo mensual promedio ($):</label>
+            <input type="number" id="sueldoMensual" name="sueldoMensual" min="1" required>
+            <label for="numProgramadores">Número de programadores:</label>
+            <input type="number" id="numProgramadores" name="numProgramadores" min="1" required>
+            <label for="duracionDeseada">Duración deseada (meses):</label>
+            <input type="number" id="duracionDeseada" name="duracionDeseada" min="1" required>
+            <button type="submit">Calcular</button>
+        </form>
+        <section id="resultados">
+            <h2>Resultados</h2>
+            <p id="resultadoTexto">Complete el formulario para ver los resultados.</p>
+        </section>
+    </main>
+    <footer>
+        <p>Desarrollado por [Tu Nombre]</p>
+    </footer>
+    <script src="index.js"></script>
 </body>
 </html>
