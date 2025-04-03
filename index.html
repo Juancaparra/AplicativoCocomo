@@ -5,27 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplicativo COCOMO 81</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
 </head>
 <body>
-    <header>
-        <h1>Modelo Intermedio COCOMO 81</h1>
+    <header class="p-6">
+        <h1 class="text-3xl text-center font-bold text-clifford">Modelo Intermedio COCOMO 81</h1>
     </header>
     <main>
-        <form id="cocomoForm">
+        <form class="p-3 flex items-center justify-center flex-col" id="cocomoForm">
+
             <h2>Ingrese los datos del proyecto</h2>
+
             <label for="kloc">Tamaño del proyecto (KLOC):</label>
-            <input type="number" id="kloc" name="kloc" min="1" required>
+            <input class="" type="number" id="kloc" name="kloc" min="1" required>
+
             <label for="factoresAjuste">Factores de ajuste:</label>
             <input type="number" id="factoresAjuste" name="factoresAjuste" step="0.01" min="0.1" required>
+
             <label for="sueldoMensual">Sueldo mensual promedio ($):</label>
             <input type="number" id="sueldoMensual" name="sueldoMensual" min="1" required>
+
             <label for="numProgramadores">Número de programadores:</label>
             <input type="number" id="numProgramadores" name="numProgramadores" min="1" required>
+
             <label for="duracionDeseada">Duración deseada (meses):</label>
             <input type="number" id="duracionDeseada" name="duracionDeseada" min="1" required>
-            <button type="submit">Calcular</button>
+
+            <button class="bg-sky-500 hover:bg-sky-700" type="submit">Calcular</button>
         </form>
-        <section id="resultados">
+        <section class="p-3" id="resultados">
             <h2>Resultados</h2>
             <p id="resultadoTexto">Complete el formulario para ver los resultados.</p>
         </section>
