@@ -9,39 +9,57 @@
     
 </head>
 <body>
+
     <header class="p-6">
-        <h1 class="text-3xl text-center font-bold text-clifford">Modelo Intermedio COCOMO 81</h1>
+        <h1 class=" text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-center font-bold text-clifford">Modelo Intermedio COCOMO 81</h1>
     </header>
+
     <main>
-        <form class="p-3 flex items-center justify-center flex-col" id="cocomoForm">
+        <form class="p-3 flex items-center justify-center flex-col sm:gap-1 md:gap-2 lg:gap-3 xl:gap-4" id="cocomoForm">
 
-            <h2>Ingrese los datos del proyecto</h2>
+            <h2 class="mb-4 text-2xl">Ingrese los datos del proyecto</h2>
 
-            <label for="kloc">Tamaño del proyecto (KLOC):</label>
-            <input class="" type="number" id="kloc" name="kloc" min="1" required>
+            <div class="flex flex-col md:flex-row gap-2 items-center xl:flex-row items-center">
+                <label for="kloc">Tamaño del proyecto (KLOC):</label>
+                <input class=" border border-black mb-4 rounded-md w-48 h-8 p-2 md:mb-0 lg:mb-0" type="number" id="kloc" name="kloc" required>
+            </div>
+            
 
-            <label for="factoresAjuste">Factores de ajuste:</label>
-            <input type="number" id="factoresAjuste" name="factoresAjuste" step="0.01" min="0.1" required>
+            <div class="flex flex-col md:flex-row gap-2 items-center xl:flex-row items-center">
+                <label for="factoresAjuste">Factores de ajuste:</label>
+                <input class=" border border-black mb-4 rounded-md" type="number" id="factoresAjuste" name="factoresAjuste" required>
+            </div>
+           
 
-            <label for="sueldoMensual">Sueldo mensual promedio ($):</label>
-            <input type="number" id="sueldoMensual" name="sueldoMensual" min="1" required>
+            <div class="flex flex-col md:flex-row gap-2 items-center xl:flex-row items-center">
+                <label for="sueldoMensual">Sueldo mensual promedio ($):</label>
+                <input class=" border border-black mb-4 rounded-md" type="number" id="sueldoMensual" name="sueldoMensual" required>
+            </div>
 
-            <label for="numProgramadores">Número de programadores:</label>
-            <input type="number" id="numProgramadores" name="numProgramadores" min="1" required>
+            <div class="flex flex-col md:flex-row gap-2 items-center xl:flex-row items-center">
+                <label for="numProgramadores">Número de programadores:</label>
+                <input class=" border border-black mb-4 rounded-md" type="number" id="numProgramadores" name="numProgramadores" required>
+            </div>
 
-            <label for="duracionDeseada">Duración deseada (meses):</label>
-            <input type="number" id="duracionDeseada" name="duracionDeseada" min="1" required>
+            <div class="flex flex-col md:flex-row gap-2 items-center xl:flex-row items-center">
+                <label for="duracionDeseada">Duración deseada (meses):</label>
+                <input class=" border border-black mb-4 rounded-md" type="number" id="duracionDeseada" name="duracionDeseada" required>
+            </div>
 
-            <button class="bg-sky-500 hover:bg-sky-700" type="submit">Calcular</button>
+            <button class="bg-sky-500 hover:bg-sky-700 rounded-lg" type="submit">Calcular</button>
         </form>
+
         <section class="p-3" id="resultados">
             <h2>Resultados</h2>
             <p id="resultadoTexto">Complete el formulario para ver los resultados.</p>
         </section>
+
     </main>
+
     <footer>
         <p>Desarrollado por [Tu Nombre]</p>
     </footer>
+
     <script src="index.js"></script>
 </body>
 </html>
