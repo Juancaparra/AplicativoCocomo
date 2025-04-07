@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplicativo COCOMO 81</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
 </head>
@@ -15,38 +15,36 @@
     </header>
 
     <main>
-        <form class="p-3 flex items-center justify-center flex-col sm:gap-1 md:gap-2 lg:gap-3 xl:gap-4" id="cocomoForm">
+        <form class="p-3 flex flex-col gap-4" id="cocomoForm">
 
-            <h2 class="mb-4 text-2xl">Ingrese los datos del proyecto</h2>
-
-            <div class="flex flex-col md:flex-row gap-2 items-center xl:flex-row items-center">
+            <h2 class="mb-4 text-xl text-center font-semibold">Ingrese los datos del proyecto</h2>
+        
+            <div class="form-group">
                 <label for="kloc">Tamaño del proyecto (KLOC):</label>
-                <input class=" border border-black mb-4 rounded-md w-48 h-8 p-2 md:mb-0 lg:mb-0" type="number" id="kloc" name="kloc" required>
+                <input type="number" id="kloc" name="kloc" required>
             </div>
-            
-
-            <div class="flex flex-col md:flex-row gap-2 items-center xl:flex-row items-center">
+        
+            <div class="form-group">
                 <label for="factoresAjuste">Factores de ajuste:</label>
-                <input class=" border border-black mb-4 rounded-md" type="number" id="factoresAjuste" name="factoresAjuste" required>
+                <input type="number" id="factoresAjuste" name="factoresAjuste" required>
             </div>
-           
-
-            <div class="flex flex-col md:flex-row gap-2 items-center xl:flex-row items-center">
+        
+            <div class="form-group">
                 <label for="sueldoMensual">Sueldo mensual promedio ($):</label>
-                <input class=" border border-black mb-4 rounded-md" type="number" id="sueldoMensual" name="sueldoMensual" required>
+                <input type="number" id="sueldoMensual" name="sueldoMensual" required>
             </div>
-
-            <div class="flex flex-col md:flex-row gap-2 items-center xl:flex-row items-center">
+        
+            <div class="form-group">
                 <label for="numProgramadores">Número de programadores:</label>
-                <input class=" border border-black mb-4 rounded-md" type="number" id="numProgramadores" name="numProgramadores" required>
+                <input type="number" id="numProgramadores" name="numProgramadores" required>
             </div>
-
-            <div class="flex flex-col md:flex-row gap-2 items-center xl:flex-row items-center">
+        
+            <div class="form-group">
                 <label for="duracionDeseada">Duración deseada (meses):</label>
-                <input class=" border border-black mb-4 rounded-md" type="number" id="duracionDeseada" name="duracionDeseada" required>
+                <input type="number" id="duracionDeseada" name="duracionDeseada" required>
             </div>
-
-            <button class="bg-sky-500 hover:bg-sky-700 rounded-lg" type="submit">Calcular</button>
+        
+            <button type="submit">Calcular</button>
         </form>
 
         <section class="p-3" id="resultados">
