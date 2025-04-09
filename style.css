@@ -157,6 +157,11 @@ button:hover {
     margin: 2rem auto;
 }
 
+#resultados >h2 {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
 footer {
     text-align: center;
     padding: 1rem;

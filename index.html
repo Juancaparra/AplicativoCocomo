@@ -1,67 +1,261 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplicativo COCOMO 81</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COCOMO-81 Calculadora</title>
+  <meta name="description" content="Calculadora de costos de proyectos basada en el modelo COCOMO-81" />
+  <meta name="author" content="Team COCOMO" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <meta property="og:title" content="COCOMO-81 Calculadora" />
+  <meta property="og:description" content="Calculadora de costos de proyectos basada en el modelo COCOMO-81" />
+  <meta property="og:type" content="website" />
 </head>
+
 <body>
+  <header>
+    <nav class="navbar">
+      <div class="container">
+        <a href="index.html" class="nav-logo">COCOMO-81</a>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="active">Calculadora</a></li>
+          <li><a href="teamInfo.html">Información del Equipo</a></li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-    <header>
-        <ul>
-            <li><img src="assets/images/cocomo-logo.png" alt="logo-cocomo"></li>
-            <li><a href=""></a>Informe</li>    
-        </ul>        
-        <h1 class=" p-6 text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-center font-bold text-clifford">Modelo Intermedio COCOMO 81</h1>
-    </header>
-
-    <main>
-        <form class="p-3 flex flex-col gap-4" id="cocomoForm">
-
-            <h2 class="mb-4 text-xl text-center font-semibold">Ingrese los datos del proyecto</h2>
+  <main class="container">
+    <div class="calculator-header">
+      <h1>MODELO COCOMO 81</h1>
+      <p>Estima el esfuerzo, duración y costo de tu proyecto de software usando el modelo COCOMO Intermedio</p>
+    </div>
+    
+    <div class="calculator-container">
+      <form id="cocomoForm" class="calculator-form">
         
-            <div class="form-group">
-                <label for="kloc">Tamaño del proyecto (KLOC):</label>
-                <input type="number" id="kloc" name="kloc" required>
+        <div class="card">
+          <h3>Parámetros Básicos</h3>
+          
+          <div class="form-grid">
+            <div class="form-column">
+              <div class="form-group">
+                <label for="kloc">Tamaño del Proyecto (KLOC)</label>
+                <input type="number" id="kloc" min="0.1" step="0.1" value="0" required>
+                <small>Miles de líneas de código fuente</small>
+              </div>
+
+              <div class="form-group">
+                <label>Tipo de Cálculo</label>
+                <div class="tabs">
+                  <div class="tab-header">
+                    <div class="tab active" data-tab="teamSize">Calcular por equipo</div>
+                    <div class="tab" data-tab="duration">Calcular por duración</div>
+                  </div>
+                  
+                  <div class="tab-content">
+
+                    <div class="tab-pane active" id="teamSizeTab">
+                      <label for="teamSize">Tamaño del Equipo (personas)</label>
+                      <input type="number" id="teamSize" min="1" step="1" value="0">
+                    </div>
+                    
+                    <div class="tab-pane" id="durationTab">
+                      <label for="duration">Duración Deseada (meses)</label>
+                      <input type="number" id="duration" min="1" step="0.5" value="0">
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
             </div>
-        
-            <div class="form-group">
-                <label for="factoresAjuste">Factores de ajuste:</label>
-                <input type="number" id="factoresAjuste" name="factoresAjuste" required>
+            
+            <div class="form-column">
+              <div class="form-group">
+                <label for="monthlySalary">Salario Mensual Promedio</label>
+                <div class="input-icon">
+                  <span class="icon">$</span>
+                  <input type="number" id="monthlySalary" min="1" value="0" required>
+                </div>
+              </div>
+              
+              
             </div>
+          </div>
+        </div>
         
-            <div class="form-group">
-                <label for="sueldoMensual">Sueldo mensual promedio ($):</label>
-                <input type="number" id="sueldoMensual" name="sueldoMensual" required>
+        <div class="card">
+          <h3>Factores de Ajuste</h3>
+          
+          <div class="cost-drivers">
+
+            <div class="cost-driver-category">
+              <h4>Atributos del Producto</h4>
+              <div class="cost-driver">
+                <label for="rely">RELY - Fiabilidad requerida</label>
+                <select id="rely" class="cost-driver-select">
+                  <option value="0.75">Muy bajo</option>
+                  <option value="0.88">Bajo</option>
+                  <option value="1.00">Nominal</option>
+                  <option value="1.15" selected>Alto</option>
+                  <option value="1.40">Muy alto</option>
+                </select>
+              </div>
             </div>
-        
-            <div class="form-group">
-                <label for="numProgramadores">Número de programadores:</label>
-                <input type="number" id="numProgramadores" name="numProgramadores" required>
+            
+            <div class="cost-driver-category">
+              <h4>Atributos del Personal</h4>
+              <div class="cost-driver">
+                <label for="aexp">AEXP - Experiencia en la aplicación</label>
+                <select id="aexp" class="cost-driver-select">
+                  <option value="1.29">Muy bajo</option>
+                  <option value="1.13" selected>Bajo</option>
+                  <option value="1.00">Nominal</option>
+                  <option value="0.91">Alto</option>
+                  <option value="0.82">Muy alto</option>
+                </select>
+              </div>
             </div>
-        
-            <div class="form-group">
-                <label for="duracionDeseada">Duración deseada (meses):</label>
-                <input type="number" id="duracionDeseada" name="duracionDeseada" required>
+            
+            <div class="cost-driver-category">
+              <h4>Atributos del Proyecto</h4>
+              <div class="cost-driver">
+                <label for="tool">TOOL - Uso de herramientas</label>
+                <select id="tool" class="cost-driver-select">
+                  <option value="1.24">Muy bajo</option>
+                  <option value="1.10" selected>Bajo</option>
+                  <option value="1.00">Nominal</option>
+                  <option value="0.91">Alto</option>
+                  <option value="0.83">Muy alto</option>
+                </select>
             </div>
+          </div>
+        </div>
         
-            <button type="submit">Calcular</button>
-        </form>
+      </div>
+      
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">Calcular Estimaciones</button>
+      </div>
+    </form>
+    
+    <div id="results" class="hidden">
+      <div class="card results-card">
+        <h3>Resultados COCOMO</h3>
+        
+        <div class="tabs">
+          <div class="tab-header">
+            <div class="tab active" data-tab="summary">Resumen</div>
+            <div class="tab" data-tab="costs">Costos</div>
+            <div class="tab" data-tab="interpretation">Interpretación</div>
+          </div>
+          
+          <div class="tab-content">
+            
+            <div class="tab-pane active" id="summaryTab">
+              <div class="results-grid">
+                <div class="metrics-card">
+                  <h4>Métricas del Proyecto</h4>
+                  
+                  <div class="metric">
+                    <span>Esfuerzo total:</span>
+                    <span id="effortResult">-</span>
+                  </div>
+                  
+                  <div class="metric">
+                    <span>Duración estimada:</span>
+                    <span id="durationResult">-</span>
+                  </div>
+                  
+                  <div class="metric">
+                    <span>Tamaño de equipo:</span>
+                    <span id="teamSizeResult">-</span>
+                  </div>
+                  
+                  <div class="metric">
+                    <span>Productividad:</span>
+                    <span id="productivityResult">-</span>
+                  </div>
+                </div>
+                
+                <div class="chart-container">
+                  <h4>Distribución del Esfuerzo</h4>
+                  <div id="effortDistributionChart" class="chart">
+                    <div id="effortAnalysis" class="effort-distribution"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            
+            <div class="tab-pane" id="costsTab">
+              <div class="costs-card">
+                <h4>Costo Total del Proyecto</h4>
+                
+                <div class="metric">
+                  <span>Sueldo mensual:</span>
+                  <span id="salaryDisplay">-</span>
+                </div>
+                
+                <div class="metric">
+                  <span>Costo total:</span>
+                  <span id="totalCostResult" class="highlight">-</span>
+                </div>
+                
+                <div class="metric">
+                  <span>Incremento salarial anual:</span>
+                  <span>5%</span>
+                </div>
+              </div>
+              
+              <div class="chart-container">
+                <h4>Costos por Año</h4>
+                <div id="yearlyCostsChart" class="chart">
+                    <div id="costByYear" class="yearly-costs"></div>
+                  </div>
+                </div>
+              </div>
+              
+              
+              <div class="tab-pane" id="interpretationTab">
+                <div class="interpretation-card">
+                  <h4>Interpretación de Resultados</h4>
+                  
+                  <div class="interpretation-text">
+                    <p><strong>Esfuerzo (<span id="effortInterpretation">-</span>):</strong> Este valor representa la cantidad de trabajo necesario para completar el proyecto, medido en persona-meses. Un persona-mes es la cantidad de trabajo que una persona puede realizar en un mes.</p>
+                    
+                    <p><strong>Duración (<span id="durationInterpretation">-</span>):</strong> Este es el tiempo estimado para completar el proyecto desde su inicio hasta su entrega.</p>
+                    
+                    <p><strong>Tamaño de equipo (<span id="teamSizeInterpretation">-</span>):</strong> Este valor sugiere el número promedio de personas que deberían trabajar en el proyecto para completarlo dentro de la duración estimada.</p>
+                    
+                    <p><strong>Costo total (<span id="costInterpretation">-</span>):</strong> Este es el costo total estimado del proyecto, considerando el salario mensual y el incremento anual del 5% si el proyecto excede un año.</p>
+                    
+                    <div class="note-box">
+                      <p><strong>Nota:</strong> Estas estimaciones están basadas en el modelo COCOMO 81 intermedio y deben utilizarse como una guía. Factores adicionales específicos de la organización y del proyecto podrían afectar los resultados.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 
-        <section class="p-3" id="resultados">
-            <h2>Resultados</h2>
-            <p id="resultadoTexto">Complete el formulario para ver los resultados.</p>
-        </section>
+  <footer>
+    <div class="container">
+      <p>© 2025 Todos los derechos reservados Cocomo</p>
+    </div>
+  </footer>
 
-    </main>
-
-    <footer>
-        <p>Desarrollado por [Tu Nombre]</p>
-    </footer>
-
-    <script src="index.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
