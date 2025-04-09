@@ -1,49 +1,123 @@
-function calcularEsfuerzo(kloc, factoresAjuste) {
-    const a = 3.2;
-    const b = 1.05;
-    return a * Math.pow(kloc, b) * factoresAjuste;
-}
-
-function calcularDuracion(esfuerzo, numProgramadores) {
-    return esfuerzo / numProgramadores;
-}
-
-function calcularEquipoNecesario(esfuerzo, duracionDeseada) {
-    return esfuerzo / duracionDeseada;
-}
-
-function estimarCosto(esfuerzo, sueldoMensual, duracionEnMeses) {
-    let costoTotal = 0;
-    let sueldoActual = sueldoMensual;
-
-    for (let mes = 1; mes <= duracionEnMeses; mes++) {
-        costoTotal += sueldoActual * esfuerzo;
-        if (mes % 12 === 0) {
-            sueldoActual *= 1.05;
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("cocomoForm");
+    const results = document.getElementById("results");
+  
+    const effortResult = document.getElementById("effortResult");
+    const durationResult = document.getElementById("durationResult");
+    const teamSizeResult = document.getElementById("teamSizeResult");
+    const productivityResult = document.getElementById("productivityResult");
+    const salaryDisplay = document.getElementById("salaryDisplay");
+    const totalCostResult = document.getElementById("totalCostResult");
+  
+    const effortInterpretation = document.getElementById("effortInterpretation");
+    const durationInterpretation = document.getElementById("durationInterpretation");
+    const teamSizeInterpretation = document.getElementById("teamSizeInterpretation");
+    const costInterpretation = document.getElementById("costInterpretation");
+  
+    // Tabs
+    document.querySelectorAll(".tab").forEach(tab => {
+      tab.addEventListener("click", () => {
+        const parent = tab.closest(".tabs");
+        const activeTab = parent.querySelector(".tab.active");
+        const activePane = parent.querySelector(".tab-pane.active");
+        const newTab = tab.dataset.tab;
+        const newPane = parent.querySelector(`#${newTab}Tab`);
+  
+        activeTab.classList.remove("active");
+        activePane.classList.remove("active");
+        tab.classList.add("active");
+        newPane.classList.add("active");
+  
+        // Resetear campos cuando se cambia de modo
+        if (newTab === "teamSize") {
+          document.getElementById("duration").value = "";
+        } else {
+          document.getElementById("teamSize").value = "";
         }
-    }
-
-    return costoTotal;
-}
-
-function interpretarResultados(esfuerzo, duracion, equipo, costo) {
-    return `
-        El esfuerzo estimado es de ${esfuerzo.toFixed(2)} persona-meses.
-        La duración estimada es de ${duracion.toFixed(2)} meses.
-        El equipo necesario es de ${equipo.toFixed(2)} programadores.
-        El costo total estimado del proyecto es de $${costo.toFixed(2)}.
-    `;
-}
-
-const kloc = 50;
-const factoresAjuste = 1.2;
-const sueldoMensual = 2000;
-const numProgramadores = 5;
-const duracionDeseada = 12;
-
-const esfuerzo = calcularEsfuerzo(kloc, factoresAjuste);
-const duracion = calcularDuracion(esfuerzo, numProgramadores);
-const equipo = calcularEquipoNecesario(esfuerzo, duracionDeseada);
-const costo = estimarCosto(esfuerzo, sueldoMensual, duracion);
-
-console.log(interpretarResultados(esfuerzo, duracion, equipo, costo));
+      });
+    });
+  
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+  
+      // Obtener valores del formulario
+      const kloc = parseFloat(document.getElementById("kloc").value);
+      const teamSizeInput = document.getElementById("teamSize").value.trim();
+      const durationInput = document.getElementById("duration").value.trim();
+      const monthlySalary = parseFloat(document.getElementById("monthlySalary").value);
+  
+      const rely = parseFloat(document.getElementById("rely").value);
+      const aexp = parseFloat(document.getElementById("aexp").value);
+      const tool = parseFloat(document.getElementById("tool").value);
+      const eaf = rely * aexp * tool;
+  
+      const a = 3.2;
+      const b = 1.05;
+      const effort = a * Math.pow(kloc, b) * eaf;
+  
+      let duration, teamSize;
+  
+      if (teamSizeInput && durationInput) {
+        alert("Por favor, llena solo uno: tamaño de equipo o duración, no ambos.");
+        return;
+      }
+  
+      if (teamSizeInput) {
+        teamSize = parseFloat(teamSizeInput);
+        duration = effort / teamSize;
+      } else if (durationInput) {
+        duration = parseFloat(durationInput);
+        teamSize = effort / duration;
+      } else {
+        duration = 2.5 * Math.pow(effort, 0.38);
+        teamSize = effort / duration;
+      }
+  
+      const productivity = kloc / effort;
+  
+      let totalCost = 0;
+      const yearlyCosts = [];
+      let remainingEffort = effort;
+      let currentYear = 1;
+      let monthlyCost = monthlySalary * teamSize;
+  
+      while (remainingEffort > 0) {
+        let months = Math.min(12, remainingEffort / teamSize);
+        const yearlyCost = months * monthlyCost;
+        yearlyCosts.push({ year: currentYear, cost: yearlyCost });
+        totalCost += yearlyCost;
+        remainingEffort -= months * teamSize;
+        monthlyCost *= 1.05;
+        currentYear++;
+      }
+  
+      // Mostrar resultados
+      effortResult.textContent = `${effort.toFixed(2)} persona-meses`;
+      durationResult.textContent = `${duration.toFixed(2)} meses`;
+      teamSizeResult.textContent = `${teamSize.toFixed(2)} personas`;
+      productivityResult.textContent = `${productivity.toFixed(2)} KLOC/persona-mes`;
+      salaryDisplay.textContent = `$${monthlySalary.toFixed(2)}`;
+      totalCostResult.textContent = `$${totalCost.toFixed(2)}`;
+  
+      // Interpretación
+      effortInterpretation.textContent = effort.toFixed(2);
+      durationInterpretation.textContent = duration.toFixed(2);
+      teamSizeInterpretation.textContent = teamSize.toFixed(2);
+      costInterpretation.textContent = `$${totalCost.toFixed(2)}`;
+  
+      // Mostrar resultados
+      results.classList.remove("hidden");
+  
+      // Distribución y costos
+      const effortAnalysis = document.getElementById("effortAnalysis");
+      const costByYear = document.getElementById("costByYear");
+      effortAnalysis.innerHTML = yearlyCosts.map(y =>
+        `<div>Año ${y.year}: ${(y.cost / monthlySalary).toFixed(2)} persona-meses</div>`
+      ).join("");
+  
+      costByYear.innerHTML = yearlyCosts.map(y =>
+        `<div>Año ${y.year}: $${y.cost.toFixed(2)}</div>`
+      ).join("");
+    });
+  });
+  
