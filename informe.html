@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Información del Equipo - COCOMO-81</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="informe.css">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="container">
+        <a href="index.html" class="nav-logo">COCOMO-81</a>
+        <ul class="nav-menu">
+          <li><a href="index.html">Calculadora</a></li>
+          <li><a href="informe.html" class="active">Información del Equipo</a></li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="calculator-header">
+      <h1>Información del Proyecto</h1>
+      <p>Detalles sobre la implementación y el equipo de desarrollo</p>
+    </div>
+    
+    <div class="info-container">
+
+      <div class="card">
+        <h3>Equipo de Desarrollo</h3>
+        <div class="team-info">
+          <p class="date-display" id="dateDisplay"></p>
+          <ul class="team-list">
+            <li><span class="team-dot primary"></span>Juan Camilo Parra Ospina</li>
+            <li><span class="team-dot primary"></span>Ronald Patiño Guevara</li>
+          </ul>
+        </div>
+      </div>
+      
+      
+      <div class="card">
+        <h3>Variables Implementadas</h3>
+        <div class="variables-info">
+          <h4>Modelo COCOMO 81 Intermedio</h4>
+          
+          <div class="info-section">
+            <h5>Variables Básicas:</h5>
+            <ul>
+              <li>Tamaño del proyecto (KLOC)</li>
+              <li>Modo de desarrollo (Orgánico)</li>
+              <li>Salario promedio mensual</li>
+            </ul>
+          </div>
+          
+          <div class="info-section">
+            <h5>Cálculos Alternativos:</h5>
+            <ul>
+              <li>Tamaño del equipo para calcular duración</li>
+              <li>Duración deseada para calcular el equipo necesario</li>
+            </ul>
+          </div>
+          
+          <div class="info-section">
+            <h5>Factores de Ajuste Implementados:</h5>
+            <ul>
+                <li>RELY - Fiabilidad requerida del software</li>
+              <li>AEXP - Experiencia en la aplicación</li>
+              <li>TOOL - Uso de herramientas software</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="card">
+        <h3>Ejemplo de Cálculo</h3>
+        <div class="example-info">
+          <div class="info-section">
+            <h5>Datos de entrada:</h5>
+            <ul>
+              <li>Tamaño: 25 KLOC (25,000 líneas de código)</li>
+              <li>Modo: Orgánico</li>
+              <li>Factores de ajuste: EAF = 1.15</li>
+              <li>Salario: 4,000,000 COP mensuales</li>
+            </ul>
+          </div>
+          
+          <div class="info-section">
+            <h5>Cálculos:</h5>
+            <ul>
+              <li>Esfuerzo = 2.4 × (25)<sup>1.05</sup> × 1.15 = 80.71 persona-meses</li>
+              <li>Duración = 2.5 × (80.71)<sup>0.38</sup> = 10.64 meses</li>
+              <li>Personal promedio = 80.71 / 10.64 = 7.59 personas</li>
+            </ul>
+          </div>
+          
+          <div class="info-section">
+            <h5>Interpretación:</h5>
+            <p>Este proyecto requeriría aproximadamente 81 persona-meses de esfuerzo, lo que significa un equipo de 7-8 personas trabajando durante 10 a 11 meses. El costo total estimado, considerando un salario mensual de 4,000,000 COP, sería de <strong>322,840,000 COP</strong>.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tecnologías utilizadas -->
+      <div class="card">
+        <h3>Tecnologías Utilizadas</h3>
+        <div class="tech-grid">
+          <div class="tech-column">
+            <h5>Frontend:</h5>
+            <ul>
+              <li>HTML para la estructura</li>
+              <li>CSS para el diseño y responsividad</li>
+              <li>JavaScript para la lógica e interactividad</li>
+            </ul>
+        </div>
+        
+        <div class="tech-column">
+          <h5>Diseño:</h5>
+          <ul>
+            <li>Diseño responsivo para dispositivos móviles y escritorio</li>
+            <li>Gradientes y efectos visuales modernos</li>
+            <li>Interfaz intuitiva y amigable</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="separator"></div>
+      
+      <p class="tech-footer">
+        Esta aplicación implementa el modelo COCOMO 81 Intermedio para proporcionar estimaciones de esfuerzo, duración, personal necesario y costos para proyectos de desarrollo de software.
+      </p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2025 Todos los derechos reservados Cocomo</p>
+  </div>
+</footer>
+
+<script>
+  // Mostrar fecha actual
+  document.addEventListener('DOMContentLoaded', function() {
+    const months = [
+      'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+      'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+    ];
+    
+    const now = new Date();
+    const month = months[now.getMonth()];
+    const year = now.getFullYear();
+    
+    document.getElementById('dateDisplay').textContent = `${month} ${year}`;
+    
+    // Manejo del menú hamburguesa
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+  });
+</script>
+</body>
+</html>
