@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const tool = parseFloat(document.getElementById("tool").value);
       const eaf = rely * aexp * tool;
   
-      const a = 3.2;
+      const a = 2.4;
       const b = 1.05;
       const effort = a * Math.pow(kloc, b) * eaf;
   
