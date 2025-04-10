@@ -13,6 +13,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const durationInterpretation = document.getElementById("durationInterpretation");
     const teamSizeInterpretation = document.getElementById("teamSizeInterpretation");
     const costInterpretation = document.getElementById("costInterpretation");
+
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
   
     // Tabs
     document.querySelectorAll(".tab").forEach(tab => {

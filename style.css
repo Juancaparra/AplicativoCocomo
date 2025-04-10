@@ -1,4 +1,4 @@
-/* Base Styles */
+
 :root {
     --background: #f8f7fd;
     --foreground: #1e1a2c;
@@ -280,7 +280,7 @@ main {
 
 .form-actions {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     margin-top: 1rem;
 }
 
@@ -306,6 +306,7 @@ main {
 
 .results-card {
     animation: fadeIn 0.5s;
+    margin-top: 1.5rem;
 }
 
 .hidden {
@@ -373,6 +374,10 @@ main {
     height: 100%;
 }
 
+.interpretation-text p{
+    margin-bottom: 0.8rem;
+}
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
@@ -386,7 +391,6 @@ footer {
     text-align: center;
 }
 
-/* Media Queries for Classes Used in HTML */
 @media (min-width: 768px) {
     .form-grid {
         grid-template-columns: 1fr 1fr;

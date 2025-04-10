@@ -41,6 +41,23 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
 }
 
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    text-indent: 0.8rem;
+}
+
+h5 {
+    font-size: 1rem;
+    margin-top: 0.8rem;
+}
+
+p {
+    margin-top: 0.6rem;
+}
 a {
     color: var(--primary);
     text-decoration: none;
@@ -231,7 +248,7 @@ main {
     animation: fadeIn 0.3s;
 }
 
-.footer {
+footer {
     background-color: var(--foreground);
     color: white;
     padding: 1.5rem 0;
@@ -244,7 +261,6 @@ main {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Media Queries for Classes Used in HTML */
 @media (min-width: 768px) {
     .form-grid {
         grid-template-columns: 1fr 1fr;

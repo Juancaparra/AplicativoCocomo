@@ -37,7 +37,7 @@
       <div class="card">
         <h3>Equipo de Desarrollo</h3>
         <div class="team-info">
-          <p class="date-display" id="dateDisplay"></p>
+          <p class="date-display" id="dateDisplay"> Abril 2025</p>
           <ul class="team-list">
             <li><span class="team-dot primary"></span>Juan Camilo Parra Ospina</li>
             <li><span class="team-dot primary"></span>Ronald Patiño Guevara</li>
@@ -109,7 +109,7 @@
         </div>
       </div>
       
-      <!-- Tecnologías utilizadas -->
+      
       <div class="card">
         <h3>Tecnologías Utilizadas</h3>
         <div class="tech-grid">
@@ -147,29 +147,6 @@
   </div>
 </footer>
 
-<script>
-  // Mostrar fecha actual
-  document.addEventListener('DOMContentLoaded', function() {
-    const months = [
-      'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
-      'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
-    ];
-    
-    const now = new Date();
-    const month = months[now.getMonth()];
-    const year = now.getFullYear();
-    
-    document.getElementById('dateDisplay').textContent = `${month} ${year}`;
-    
-    // Manejo del menú hamburguesa
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    hamburger.addEventListener('click', function() {
-      hamburger.classList.toggle('active');
-      navMenu.classList.toggle('active');
-    });
-  });
-</script>
+<script src="index.js"></script>
 </body>
 </html>
