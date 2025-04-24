@@ -91,11 +91,14 @@
           </div>
         </div>
         
+
+        
         <div class="card">
           <h3>Factores de Ajuste</h3>
           
           <div class="cost-drivers">
 
+            <!-- Atributos del Producto -->
             <div class="cost-driver-category">
               <h4>Atributos del Producto</h4>
               <div class="cost-driver">
@@ -104,42 +107,169 @@
                   <option value="0.75">Muy bajo</option>
                   <option value="0.88">Bajo</option>
                   <option value="1.00">Nominal</option>
-                  <option value="1.15" selected>Alto</option>
+                  <option value="1.15">Alto</option>
                   <option value="1.40">Muy alto</option>
                 </select>
               </div>
+              <div class="cost-driver">
+                <label for="data">DATA - Tamaño de la base de datos</label>
+                <select id="data" class="cost-driver-select">
+                  <option value="0.94">Muy bajo</option>
+                  <option value="1.00">Bajo</option>
+                  <option value="1.08">Nominal</option>
+                  <option value="1.16">Alto</option>
+                  <option value="1.24">Muy alto</option>
+                </select>
+              </div>
+              <div class="cost-driver">
+                <label for="cplx">CPLX - Complejidad del producto</label>
+                <select id="cplx" class="cost-driver-select">
+                  <option value="0.70">Muy bajo</option>
+                  <option value="0.85">Bajo</option>
+                  <option value="1.00">Nominal</option>
+                  <option value="1.15">Alto</option>
+                  <option value="1.30">Muy alto</option>
+                  <option value="1.65">Extra alto</option>
+                </select>
+              </div>
             </div>
-            
+
+            <!-- Atributos de la Computadora -->
+            <div class="cost-driver-category">
+              <h4>Atributos de la Computadora</h4>
+              <div class="cost-driver">
+                <label for="time">TIME - Restricciones del tiempo de ejecución</label>
+                <select id="time" class="cost-driver-select">
+                  <option value="1.00">Nominal</option>
+                  <option value="1.11">Alto</option>
+                  <option value="1.30">Muy alto</option>
+                  <option value="1.66">Extra alto</option>
+                </select>
+              </div>
+              <div class="cost-driver">
+                <label for="stor">STOR - Restricciones del almacenamiento principal</label>
+                <select id="stor" class="cost-driver-select">
+                  <option value="1.00">Nominal</option>
+                  <option value="1.06">Alto</option>
+                  <option value="1.21">Muy alto</option>
+                  <option value="1.56">Extra alto</option>
+                </select>
+              </div>
+              <div class="cost-driver">
+                <label for="virt">VIRT - Inestabilidad de la máquina virtual</label>
+                <select id="virt" class="cost-driver-select">
+                  <option value="0.87">Muy bajo</option>
+                  <option value="1.00">Nominal</option>
+                  <option value="1.15">Alto</option>
+                  <option value="1.30">Muy alto</option>
+                </select>
+              </div>
+              <div class="cost-driver">
+                <label for="turn">TURN - Tiempo de respuesta del computador</label>
+                <select id="turn" class="cost-driver-select">
+                  <option value="0.87">Muy bajo</option>
+                  <option value="1.00">Nominal</option>
+                  <option value="1.07">Alto</option>
+                  <option value="1.15">Muy alto</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Atributos del Personal -->
             <div class="cost-driver-category">
               <h4>Atributos del Personal</h4>
+              <div class="cost-driver">
+                <label for="acap">ACAP - Capacidad del analista</label>
+                <select id="acap" class="cost-driver-select">
+                  <option value="1.46">Muy bajo</option>
+                  <option value="1.19">Bajo</option>
+                  <option value="1.00">Nominal</option>
+                  <option value="0.86">Alto</option>
+                  <option value="0.71">Muy alto</option>
+                </select>
+              </div>
               <div class="cost-driver">
                 <label for="aexp">AEXP - Experiencia en la aplicación</label>
                 <select id="aexp" class="cost-driver-select">
                   <option value="1.29">Muy bajo</option>
-                  <option value="1.13" selected>Bajo</option>
+                  <option value="1.13">Bajo</option>
                   <option value="1.00">Nominal</option>
                   <option value="0.91">Alto</option>
                   <option value="0.82">Muy alto</option>
                 </select>
               </div>
+              <div class="cost-driver">
+                <label for="pcap">PCAP - Capacidad de los programadores</label>
+                <select id="pcap" class="cost-driver-select">
+                  <option value="1.42">Muy bajo</option>
+                  <option value="1.17">Bajo</option>
+                  <option value="1.00">Nominal</option>
+                  <option value="0.86">Alto</option>
+                  <option value="0.70">Muy alto</option>
+                </select>
+              </div>
+              <div class="cost-driver">
+                <label for="vexp">VEXP - Experiencia en S.O. utilizado</label>
+                <select id="vexp" class="cost-driver-select">
+                  <option value="1.21">Muy bajo</option>
+                  <option value="1.10">Bajo</option>
+                  <option value="1.00">Nominal</option>
+                  <option value="0.90">Alto</option>
+                  <option value="0.82">Muy alto</option>
+                </select>
+              </div>
+              <div class="cost-driver">
+                <label for="lexp">LEXP - Experiencia en el lenguaje de programación</label>
+                <select id="lexp" class="cost-driver-select">
+                  <option value="1.14">Muy bajo</option>
+                  <option value="1.07">Bajo</option>
+                  <option value="1.00">Nominal</option>
+                  <option value="0.95">Alto</option>
+                  <option value="0.91">Muy alto</option>
+                </select>
+              </div>
             </div>
-            
+
+            <!-- Atributos del Proyecto -->
             <div class="cost-driver-category">
               <h4>Atributos del Proyecto</h4>
+              <div class="cost-driver">
+                <label for="modp">MODP - Uso de prácticas de programación modernas</label>
+                <select id="modp" class="cost-driver-select">
+                  <option value="1.24">Muy bajo</option>
+                  <option value="1.10">Bajo</option>
+                  <option value="1.00">Nominal</option>
+                  <option value="0.91">Alto</option>
+                  <option value="0.82">Muy alto</option>
+                </select>
+              </div>
               <div class="cost-driver">
                 <label for="tool">TOOL - Uso de herramientas</label>
                 <select id="tool" class="cost-driver-select">
                   <option value="1.24">Muy bajo</option>
-                  <option value="1.10" selected>Bajo</option>
+                  <option value="1.10">Bajo</option>
                   <option value="1.00">Nominal</option>
                   <option value="0.91">Alto</option>
                   <option value="0.83">Muy alto</option>
                 </select>
+              </div>
+              <div class="cost-driver">
+                <label for="sced">SCED - Restricciones en la duración del proyecto</label>
+                <select id="sced" class="cost-driver-select">
+                  <option value="1.23">Muy bajo</option>
+                  <option value="1.08">Bajo</option>
+                  <option value="1.00">Nominal</option>
+                  <option value="1.04">Alto</option>
+                  <option value="1.10">Muy alto</option>
+                </select>
+              </div>
             </div>
-          </div>
+       
+      
+  <script src="index.js"></script>
+</body>
+</html>
         </div>
-        
-      </div>
       
       <div class="form-actions">
         <button type="submit" class="btn-primary">Calcular Estimaciones</button>
