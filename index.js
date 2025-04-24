@@ -100,7 +100,10 @@ document.addEventListener("DOMContentLoaded", function () {
       "rely", "data", "cplx", "time", "stor", "virt", "turn",
       "acap", "aexp", "pcap", "vexp", "lexp", "modp", "tool", "sced"
     ];
-    return factors.reduce((acc, id) => acc * parseFloat(document.getElementById(id).value), 1);
+    return factors.reduce((acc, id) => {
+      const value = parseFloat(document.getElementById(id).value);
+      return acc * (isNaN(value) ? 1 : value); // default to 1 ("ninguno") if invalid
+    }, 1);
   }
 
   function calculateEffort(kloc, eaf) {
